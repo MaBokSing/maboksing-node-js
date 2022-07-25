@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joel Cheong Hair Studio Appointment</title>
+    <style>
+        .namebox {
+            font-size: 20px;
+            font-family: Tahoma, sans-serif;
+        }
+
+        .textbox {
+            height: 22px;
+            width: 300px;
+            font-size: 16pt;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+            resize: none;
+            outline: none;
+        }
+
+        .selection {
+            border: none;
+            background-color: inherit;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .selection:hover {background: #eee;}
+    </style>
+</head>
+
+<body onload="check()"
+    style="position: absolute; top: 50%; left: 50%; -moz-transform: translateX(-50%) translateY(-50%); -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%);">
+    <h1>
+        <font face="Arial"> Joel Cheong Hair Studio Appointment </font>
+    </h1>
+    <form action="" method="POST">
+        <div>
+            <label for="name" class="namebox">Name</label>
+            <object style="height:0px; width:0px;"></object>
+            <input type="text" id="name" name="name" class="textbox" autocomplete="off" required />
+        </div>
+        <div>
+            <object style="height:2px"></object>
+        </div>
+        <div>
+            <label for="date" class="namebox">Date</label>
+            <object style="height:0px; width:0px;"></object>
+            <input type="text" id="date" name="date" class="textbox" autocomplete="off" required />
+        </div>
+        <div>
+            <object style="height:2px"></object>
+        </div>
+        <div>
+            <label for="phoneNumber" class="namebox">Mobile Number</label>
+            <object style="height:0px; width:0px;"></object>
+            <input type="text" id="phoneNumber" name="phoneNumber" class="textbox" autocomplete="off" placeholder="012-3456789" pattern="[0][1][0-9]{1}-[0-9]{7}|[0][1][0-9]{1}-[0-9]{8}|[0][0-9]{1}-[0-9]{8}|[0][0-9]{1}-[0-9]{9}" required />
+        </div>
+        <div>
+            <object style="height:2px"></object>
+        </div>
+        <div>
+            <label for="content" class="namebox">Content</label>
+            <object style="height:0px; width:0px;"></object>
+            <textarea id="content" name="content" cols="30" rows="5" style="vertical-align: text-top; font-size: 16pt; outline: none; resize: none;" autocomplete="off"></textarea>
+        </div>
+        <div>
+            <object style="height:10px"></object>
+        </div>
+        <div>
+            <button type="button" onclick="setInputValue('time', value)" value="1200-1400" id="1200-1400" class="selection">1200-1400</button>
+            <button type="button" onclick="setInputValue('time', value)" value="1400-1600" id="1400-1600" class="selection">1400-1600</button>
+            <button type="button" onclick="setInputValue('time', value)" value="1600-1800" id="1600-1800" class="selection">1600-1800</button>
+            <button type="button" onclick="setInputValue('time', value)" value="1800-2000" id="1800-2000" class="selection">1800-2000</button>
+        </div>
+        <div>
+            <object style="height:2px"></object>
+        </div>
+        <div>
+            <label for="time" class="namebox">Time</label>
+            <object style="height:0px; width:0px;"></object>
+            <input type="text" id="time" name="time" class="textbox" style="border-bottom: none; caret-color: transparent; width: 100px;" autocomplete="off" onkeydown="return false;" required/>
+        </div>
+        <div>
+            <object style="height:10px"></object>
+        </div>
+        <button type="submit" style="height:30px">Submit</button>
+    </form>
+
+    <script>
+        const i = ["<%= rowAvailable[0] %>","<%= rowAvailable[1] %>","<%= rowAvailable[2] %>","<%= rowAvailable[3] %>"];
+        function setInputValue(input_id, val) {
+            document.getElementById(input_id).setAttribute('value', val);
+        }
+        function check(){
+            document.getElementById("name").setAttribute('value', 'Low');
+            if( i[0] == "false" ){
+                document.getElementById("1200-1400").setAttribute('disabled', true);
+            }
+            if( i[1] == "false" ){
+                document.getElementById("1400-1600").setAttribute('disabled', true);
+            }
+            if( i[2] == "false" ){
+                document.getElementById("1600-1800").setAttribute('disabled', true);
+            }
+            if( i[3] == "false" ){
+                document.getElementById("1800-2000").setAttribute('disabled', true);
+            }
+        }
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+
+</body>
+
+
+</html>
